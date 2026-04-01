@@ -1,38 +1,151 @@
-.App {
-  text-align: center;
+:root {
+  --primary: #7C83FD;
+  --secondary: #9FA5FF;
+  --bg-color: #F8F9FE;
+  --card-bg: #FFFFFF;
+  --text-dark: #2D3436;
+  --text-muted: #8F9BB3;
+  --accent-mint: #B2DFDB;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+body { background-color: var(--bg-color); color: var(--text-dark); }
 
-.App-header {
-  background-color: #282c34;
+.web-wrapper {
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* NAVBAR */
+.navbar {
+  padding: 20px 10%;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background: transparent;
+}
+
+.nav-brand { font-size: 20px; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; }
+.user-profile-lite { width: 35px; height: 35px; background: #E0E4F5; border-radius: 50%; }
+
+/* CENTRAL CONTENT */
+.central-content {
+  max-width: 1100px;
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+/* HERO SECTION */
+.hero-section {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.hero-title { font-size: 42px; font-weight: 800; margin-bottom: 10px; }
+.hero-subtitle { color: var(--text-muted); font-size: 18px; margin-bottom: 40px; }
+
+.input-hero-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.web-input-pill {
+  background: white;
+  padding: 10px 10px 10px 30px;
+  border-radius: 100px;
+  display: flex;
+  box-shadow: 0 15px 40px rgba(124, 131, 253, 0.12);
+  border: 1px solid #EEF0FB;
+}
+
+.web-input-pill input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 17px;
+  background: transparent;
+}
+
+.web-save-btn {
+  background: var(--primary);
   color: white;
+  border: none;
+  padding: 14px 35px;
+  border-radius: 100px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+.web-save-btn:hover { background: var(--secondary); transform: translateY(-2px); }
+
+/* GRID AREA */
+.notes-display-area { margin-top: 40px; }
+.filter-bar { margin-bottom: 25px; border-bottom: 2px solid #EEE; padding-bottom: 15px; }
+.filter-bar h3 { font-size: 18px; color: var(--text-dark); }
+
+.web-masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* NOTE TILE */
+.web-note-tile {
+  background: white;
+  border-radius: 24px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.web-note-tile:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 25px rgba(124, 131, 253, 0.08);
+}
+
+.tile-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.category-dot { width: 12px; height: 12px; background: var(--accent-mint); border-radius: 4px; }
+
+.tile-del {
+  background: none;
+  border: none;
+  color: #FF7675;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.tile-del:hover { opacity: 1; }
+
+.tile-body { font-size: 16px; color: #444; line-height: 1.6; margin-bottom: 20px; flex: 1; }
+
+.tile-bottom { border-top: 1px solid #F5F6FA; padding-top: 15px; }
+
+.tile-check {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary);
+  cursor: pointer;
+  display: inline-block;
+}
+
+.is-complete { opacity: 0.6; background: #FDFDFF; }
+.is-complete .tile-body { text-decoration: line-through; }
+.tile-check.checked { color: var(--text-muted); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-title { font-size: 32px; }
+  .web-masonry-grid { grid-template-columns: 1fr; }
 }
